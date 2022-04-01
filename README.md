@@ -1,24 +1,21 @@
 # Bedrock + Sage
 
-## Overview
+### Требования
 
-Bedrock is a modern WordPress stack that helps you get started with the best development tools and project structure.
+- PHP >= 8.1
+- Composer >= 2.0
+- Node.js `16.14.2` - строго эта версия!
+- Yarn 1.22.5
 
-Much of the philosophy behind Bedrock is inspired by the [Twelve-Factor App](http://12factor.net/) methodology including the [WordPress specific version](https://roots.io/twelve-factor-wordpress/).
+### Такой же проект с нуля
 
-## Features
-
-- Better folder structure
-- Dependency management with [Composer](https://getcomposer.org)
-- Easy WordPress configuration with environment specific files
-- Environment variables with [Dotenv](https://github.com/vlucas/phpdotenv)
-- Autoloader for mu-plugins (use regular plugins as mu-plugins)
-- Enhanced security (separated web root and secure passwords with [wp-password-bcrypt](https://github.com/roots/wp-password-bcrypt))
-
-## Requirements
-
-- PHP >= 7.4
-- Composer - [Install](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx)
+1. ```sh
+   $ composer create-project roots/bedrock .
+   ```
+2. ```sh
+   $ cd web/app/themes/
+   $ composer create-project roots/sage your-theme-name
+   ```
 
 ## Installation
 
