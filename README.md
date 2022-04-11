@@ -7,6 +7,16 @@
 - Node.js `16.14.2` - строго эта версия!
 - Yarn 1.22.5
 
+### Установка плагинов WP
+
+Ищем плагины тут: [wpackagist.org](https://wpackagist.org/search?q=&type=plugin)
+пример:
+composer require "wpackagist-plugin/wordpress-seo":"18.5.1"
+```sh
+$ composer require "wpackagist-plugin/wordpress-seo":"18.5.1"
+```
+
+
 ### Такой же проект с нуля
 
 1. ```sh
