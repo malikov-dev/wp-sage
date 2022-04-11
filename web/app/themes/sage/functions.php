@@ -64,6 +64,11 @@ collect(['setup', 'filters'])
         }
     });
 
+/**
+ * On this file we only append another function files
+ */
+require_once dirname(__DIR__ . '/resources') . '/resources/functions/remove.php';
+
 /*
 |--------------------------------------------------------------------------
 | Enable Sage Theme Support
