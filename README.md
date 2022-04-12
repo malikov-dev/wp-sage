@@ -6,6 +6,26 @@
 - Composer >= 2.0
 - Node.js `16.14.2` - строго эта версия!
 - Yarn 1.22.5
+- 
+### Установка
+
+1. `@ sage/bud.config.js` Сменить на локальных хост
+
+### Дополнительно
+
+- `yarn dev` – запустить dev-проект [http://0.0.0.0:3000](http://0.0.0.0:3000)
+- `yarn build` – запустить production сборку
+
+
+### Установка плагинов WP
+
+Ищем плагины тут: [wpackagist.org](https://wpackagist.org/search?q=&type=plugin)
+пример:
+composer require "wpackagist-plugin/wordpress-seo":"18.5.1"
+```sh
+$ composer require "wpackagist-plugin/wordpress-seo":"18.5.1"
+```
+
 
 ### Такой же проект с нуля
 
