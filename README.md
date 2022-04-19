@@ -1,12 +1,14 @@
 # Bedrock + Sage
 
+Если в phpstorm перестанет работать автокомплит, то `file / Invalidate Caches`
+
 ### Требования
 
 - PHP >= 8.1
 - Composer >= 2.0
 - Node.js `16.14.2` - строго эта версия!
 - Yarn 1.22.5
-- 
+
 ### Установка
 
 1. `@ sage/bud.config.js` Сменить на локальных хост
