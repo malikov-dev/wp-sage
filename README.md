@@ -28,6 +28,31 @@ composer require "wpackagist-plugin/wordpress-seo":"18.5.1"
 $ composer require "wpackagist-plugin/wordpress-seo":"18.5.1"
 ```
 
+### Snippet nginx
+
+````
+server {
+    listen 80;
+    server_name w-sage.test;
+    root /var/www/w-sage/web;
+    index index.html index.htm index.php;
+    location / {
+        try_files $uri $uri/ =404;
+        if (!-e $request_filename) {
+            rewrite ^.+/?(/wp-.*) $1 last;
+            rewrite ^.+/?(/.*\.php)$ $1 last;
+            rewrite ^(.+)$ /index.php?q=$1 last;
+        }
+    }
+    location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/var/run/php/php8.1-fpm.sock;
+    }
+    location ~ /\.ht {
+        deny all;
+    }
+}
+````
 
 ### Такой же проект с нуля
 
