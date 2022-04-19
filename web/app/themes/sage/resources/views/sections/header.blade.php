@@ -8,4 +8,8 @@
       {!! wp_nav_menu(['theme_location' => 'primary_navigation', 'menu_class' => 'nav', 'echo' => false]) !!}
     </nav>
   @endif
+
+  <div style="border: 1px solid green;padding: 50px;">
+    @include('icons.like', ['iClass' => 'banner__link-svg'])
+  </div>
 </header>
