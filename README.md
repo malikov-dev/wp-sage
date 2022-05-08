@@ -1,17 +1,18 @@
 # Bedrock + Sage
 
-Если в phpstorm перестанет работать автокомплит, то `file / Invalidate Caches`
-
 ### Требования
 
 - PHP >= 8.1
 - Composer >= 2.0
-- Node.js `16.14.2` - строго эта версия!
+- Node.js `16.14.2` - строго эта версия! `nvm use 16.14.2`
 - Yarn 1.22.5
 
 ### Установка
 
-1. `@ sage/bud.config.js` Сменить на локальных хост
+1. `chmod 777 web/app/cache`
+2. `@ sage/bud.config.js` Сменить на локальных хост
+3. `yarn`
+4. `yarn build`
 
 ### Дополнительно
 
@@ -28,31 +29,6 @@ composer require "wpackagist-plugin/wordpress-seo":"18.5.1"
 $ composer require "wpackagist-plugin/wordpress-seo":"18.5.1"
 ```
 
-### Snippet nginx
-
-````
-server {
-    listen 80;
-    server_name w-sage.test;
-    root /var/www/w-sage/web;
-    index index.html index.htm index.php;
-    location / {
-        try_files $uri $uri/ =404;
-        if (!-e $request_filename) {
-            rewrite ^.+/?(/wp-.*) $1 last;
-            rewrite ^.+/?(/.*\.php)$ $1 last;
-            rewrite ^(.+)$ /index.php?q=$1 last;
-        }
-    }
-    location ~ \.php$ {
-        include snippets/fastcgi-php.conf;
-        fastcgi_pass unix:/var/run/php/php8.1-fpm.sock;
-    }
-    location ~ /\.ht {
-        deny all;
-    }
-}
-````
 
 ### Такой же проект с нуля
 
