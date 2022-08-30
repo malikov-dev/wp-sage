@@ -1,4 +1,4 @@
-<header class="banner">
+<header class="header">
   <a class="brand" href="{{ home_url('/') }}">
     {!! $siteName !!}
   </a>
@@ -9,7 +9,7 @@
     </nav>
   @endif
 
-  <div style="border: 1px solid green;padding: 50px;">
+  <div style="border: 1px solid black;padding: 15px;">
     @include('icons.like', ['iClass' => 'banner__link-svg'])
   </div>
 </header>

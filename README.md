@@ -7,12 +7,19 @@
 - Node.js `16.14.2` - строго эта версия! `nvm use 16.14.2`
 - Yarn 1.22.5
 
+
 ### Установка
 
-1. `chmod 777 web/app/cache`
-2. `@ sage/bud.config.js` Сменить на локальных хост
-3. `yarn`
-4. `yarn build`
+1. `cp .env.example .env` Отредачить .env
+2. `composer install` или `composer install --ignore-platform-reqs`
+3. `chmod 777 web/app/cache`
+4. `cd web/app/themes/sage/`
+5. `composer install`
+6. `@ sage/bud.config.js` Сменить на локальных хост
+7. `nvm use 16.14.2` - только если другая версия сейчас
+8. `yarn`
+9. `yarn build`
+
 
 ### Дополнительно
 
@@ -24,9 +31,73 @@
 
 Ищем плагины тут: [wpackagist.org](https://wpackagist.org/search?q=&type=plugin)
 пример:
+```
 composer require "wpackagist-plugin/wordpress-seo":"18.5.1"
-```sh
-$ composer require "wpackagist-plugin/wordpress-seo":"18.5.1"
+```
+
+
+### Сниппет nginx
+
+```
+server {
+    listen 80;
+    server_name wp-sage.test;
+
+    root /var/www/wp-sage/web;
+    index index.php index.html index.htm;
+
+    location / {
+        try_files $uri $uri/ =404;
+        if (!-e $request_filename) {
+            rewrite ^.+/?(/wp-.*) $1 last;
+            rewrite ^.+/?(/.*\.php)$ $1 last;
+            rewrite ^(.+)$ /index.php?q=$1 last;
+        }
+    }
+
+    location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/var/run/php/php8.1-fpm.sock;
+    }
+    
+    # Prevent PHP scripts from being executed inside the uploads folder.
+    location ~* /app/uploads/.*.php$ {
+        deny all;
+    }
+
+    location ~ /\.ht {
+        deny all;
+    }
+}
+```
+
+```
+sudo ln -s /etc/nginx/sites-available/wp-sage /etc/nginx/sites-enabled/
+sudo systemctl reload nginx
+```
+
+
+### Сниппет apache
+
+ссылаемся на корень, тк .htaccess все сделают
+
+```
+<VirtualHost *:80>
+    ServerName wp-sage.test
+    DocumentRoot /var/www/wp-sage
+    ErrorLog /var/www/_logs/wp-sage/error.log
+    CustomLog /var/www/_logs/wp-sage/access.log combined
+    <Directory /var/www/wp-sage/>
+        Options +FollowSymlinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+</VirtualHost>
+```
+
+```
+sudo a2ensite wp-sage.conf
+sudo systemctl restart apache2
 ```
 
 
@@ -64,13 +135,3 @@ $ composer require "wpackagist-plugin/wordpress-seo":"18.5.1"
 3. Add theme(s) in `web/app/themes/` as you would for a normal WordPress site
 4. Set the document root on your webserver to Bedrock's `web` folder: `/path/to/site/web/`
 5. Access WordPress admin at `https://example.com/wp/wp-admin/`
-
-## Community
-
-Keep track of development and community news.
-
-- Join us on Roots Slack by becoming a [GitHub sponsor](https://github.com/sponsors/roots) or [patron](https://www.patreon.com/rootsdev)
-- Participate on the [Roots Discourse](https://discourse.roots.io/)
-- Follow [@rootswp on Twitter](https://twitter.com/rootswp)
-- Read and subscribe to the [Roots Blog](https://roots.io/blog/)
-- Subscribe to the [Roots Newsletter](https://roots.io/subscribe/)
