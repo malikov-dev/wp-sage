@@ -36,3 +36,9 @@ remove_filter('wp_mail', 'wp_staticize_emoji_for_email');
 
 // отключаем wlw manifest
 remove_action('wp_head', 'wlwmanifest_link');
+
+// Отключаем ссылку на REST API
+remove_action('wp_head', 'rest_output_link_wp_head', 10);
+
+// Отключаем ссылку для редактирования внешними сервисами rel="EditURI"
+remove_action( 'wp_head', 'rsd_link' );

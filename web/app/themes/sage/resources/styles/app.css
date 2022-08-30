@@ -3,3 +3,7 @@
 /*@import 'tailwindcss/utilities';*/
 @import "common/global.scss";
 @import "common/fonts.scss";
+
+/* Components */
+@import "components/header/init.scss";
+@import "components/footer/init.scss";

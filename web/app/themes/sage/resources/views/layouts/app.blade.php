@@ -1,17 +1,23 @@
-<a class="sr-only focus:not-sr-only" href="#main">
-  {{ __('Skip to content') }}
-</a>
+<!doctype html>
+<html {!! get_language_attributes() !!}>
+@include('components.head.wrap')
+<body @php body_class() @endphp>
+<div class="wrapper">
 
-@include('sections.header')
+  @php do_action('get_header') @endphp
+  @include('components.header.wrap')
 
   <main id="main" class="main">
     @yield('content')
   </main>
 
   @hasSection('sidebar')
-    <aside class="sidebar">
-      @yield('sidebar')
-    </aside>
+    @yield('sidebar')
   @endif
 
-@include('sections.footer')
+</div>
+@include('components.footer.wrap')
+@php do_action('get_footer') @endphp
+@php wp_footer() @endphp
+</body>
+</html>

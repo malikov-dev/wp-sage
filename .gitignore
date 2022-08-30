@@ -10,7 +10,6 @@ web/app/cache/*
 
 # WordPress
 web/wp
-web/.htaccess
 
 # Logs
 *.log
@@ -25,6 +24,8 @@ web/.htaccess
 
 # WP-CLI
 wp-cli.local.yml
+
+composer.lock
 
 .DS_Store
 .idea

@@ -32,7 +32,7 @@ module.exports = async (app) => {
      *
      * This should be the URL you use to visit your local development server.
      */
-    .proxy('http://w-sage.test')
+    .proxy('http://wp-sage.test')
 
     /**
      * Development URL to be used in the browser.
