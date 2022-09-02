@@ -68,6 +68,7 @@ collect(['setup', 'filters'])
  * On this file we only append another function files
  */
 require_once dirname(__DIR__ . '/resources') . '/resources/functions/remove.php';
+require_once dirname(__DIR__ . '/resources') . '/resources/functions/bem-menu.php';
 require_once dirname(__DIR__ . '/resources') . '/resources/functions/widgets.php';
 
 /*
