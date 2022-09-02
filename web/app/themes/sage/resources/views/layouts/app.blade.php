@@ -7,6 +7,8 @@
   @php do_action('get_header') @endphp
   @include('components.header.wrap')
 
+  @include('components.breadcrumbs.wrap')
+
   <main id="main" class="main">
     @yield('content')
   </main>
