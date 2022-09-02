@@ -32,8 +32,9 @@
 Ищем плагины тут: [wpackagist.org](https://wpackagist.org/search?q=&type=plugin)
 пример:
 ```
-composer require "wpackagist-plugin/wordpress-seo":"18.5.1"
+composer require "wpackagist-plugin/wordpress-seo":"19.6.1"
 ```
+после не забудь в `/web/app/languages/plugins` положить файлы русификации
 
 
 ### Сниппет nginx
